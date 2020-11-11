@@ -1,6 +1,0 @@
----
-- import_playbook: playbooks/db/main.yml
-- import_playbook: playbooks/elasticsearch/main.yml
-- import_playbook: playbooks/tomcat/main.yml
-- import_playbook: playbooks/lumisportal/main.yml
-- import_playbook: playbooks/httpd/main.yml
