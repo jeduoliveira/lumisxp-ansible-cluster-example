@@ -1,0 +1,18 @@
+---
+# Elasticsearch Parameters 
+elasticsearch_node_name: node-1
+elasticsearch_network_host: 192.168.50.11
+
+# Lumisportal Parameters
+lumis_server_id: lumis1
+lumis_cluster_enable: yes
+lumis_cluster_bind_addr: 192.168.50.11
+
+# Tomcat Parameters
+tomcat_jvm_id:  "{{ lumis_server_id }}"
+
+# Apache Parameters
+httpd_virtualhost:
+  - domain: 192.168.50.11
+    alias: 192.168.50.11
+    www: /opt/htdocs

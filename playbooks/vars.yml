@@ -1,0 +1,57 @@
+---
+
+# MySQL parameters
+mysql_enabled_on_startup: true
+mysql_root_password_update: true
+mysql_databases:
+  - name: lumisportal
+    encoding: utf8
+    collation: utf8_general_ci
+
+#########################################
+# Zulu Parameters
+#########################################
+java_home: /usr/lib/jvm/zulu-{{ zulu_version }}
+
+#########################################
+# Elasticsearch Parameters
+#########################################
+elasticsearch_initial_master_nodes: '["node-1", "node-2"]'
+elasticsearch_discovery_seed_hosts: '["192.168.50.11","192.168.50.12"]'
+
+# tomcat 
+tomcat_maxThreads_http: 5
+tomcat_maxThreads_ajp: 10
+
+# Lumisportal Parameters
+lumis_source_install_type: local
+lumis_source_install_path: /home/joliveira/Downloads
+lumis_version: 12.5.0
+lumis_release: 200928
+lumis_db_type: MySQL
+lumis_db_url: 192.168.50.10
+lumis_db_hikari_minimumIdle: 30
+lumis_db_hikari_maximumPoolSize: 150
+lumis_elasticsearch_http_9200: 192.168.50.11:9200,192.168.50.12:9200
+lumis_elasticsearch_http_9300: 192.168.50.11:9300,192.168.50.12:9300
+lumis_environment_type: PRODUCTION
+lumis_cluster_start_port: 50001
+lumis_cluster_initial_hosts: 192.168.50.11[50001],192.168.50.12[50001]
+
+# Apache Parameters
+httpd_group: root
+
+httpd_balancer_members_ajp:
+  - ip: 192.168.50.11
+    port: 8009
+    route: lumis1
+  - ip: 192.168.50.12
+    port: 8009
+    route: lumis2
+httpd_balancer_members_http:
+  - ip: 192.168.50.11
+    port: 8080
+    route: lumis1
+  - ip: 192.168.50.12
+    port: 8080
+    route: lumis2

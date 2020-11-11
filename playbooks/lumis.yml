@@ -1,0 +1,27 @@
+---
+
+- hosts: 
+    lumis1
+    lumis2
+  become: yes
+  become_user: root
+
+  vars_files:
+    - secrets.yml
+    - vars.yml
+
+  roles:
+    - role: jeduoliveira.zulu_openjdk
+      tags: init-config
+
+    - role: jeduoliveira.elasticsearch
+      tags: init-config
+
+    - role: jeduoliveira.tomcat
+      tags: init-config
+
+    - role: jeduoliveira.lumisportal
+      tags: lumis
+      
+    - role: jeduoliveira.apache
+      tags: apache
